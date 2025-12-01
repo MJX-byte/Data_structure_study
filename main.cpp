@@ -1,55 +1,28 @@
-//main.cpp
-#include"linklist.h"
+#include"linkstack.h"
 int main()
 {
-	char x;
-	char arr1 = 'm';
-	char arr2 = 'n';
-//在main函数中测试这些操作：
-//初始化InitList(&L)；
-	LinkList L;
-	InitList(L);
-	cout << "前插法:" << "*************" << endl;
-//创建链表头插CreateList_H(&L)
-	CreateList_H(L, 5);
-//遍历ListTraverse(L);
-	ListTraverse(L);
-//取值GetElem(L, i, &e)、查找LocateElem(L, e)
-	GetElem(L, 3,x);
-	cout<<"所查找的值的地址为:"<<LocateElem(L,arr1)<<endl;
-//插入ListInsert(&L, i, e)、删除ListDelete(&L, i);
-	ListInsert(L, 2, arr2);
-	ListTraverse(L);
-	ListDelete(L,3);
-	ListTraverse(L); 
-//LinkList  Find(L, e) 、LinkList  Locate(L, i)
-	cout<<"所查找值的位置为:"<<Find(L, arr1)<<endl;
-	cout << "第i个值的地址为:" << Locate(L, 3) << endl;
-//判空ListEmpty(L)、求表长ListLength(L)、释放DestroyList(&L)、置空ClearList(&L)；
-	ListLength(L);
-	ClearList(L);
-	DestroyList(L);
-	ListEmpty(L);
-
-	cout << "尾插法:" << "*******************" << endl;
-    //尾插CreateList_R(&L)
-	CreateList_R(L);
-	//遍历ListTraverse(L);
-	ListTraverse(L);
-	//取值GetElem(L, i, &e)、查找LocateElem(L, e)
-	GetElem(L, 3, x);
-	cout << "所查找的值的地址为:" << LocateElem(L, arr1) << endl;
-	//插入ListInsert(&L, i, e)、删除ListDelete(&L, i);
-	ListInsert(L, 2, arr2);
-	ListTraverse(L);
-	ListDelete(L, 3);
-	ListTraverse(L);
-	//LinkList  Find(L, e) 、LinkList  Locate(L, i)
-	cout << "所查找值的位置为:" << Find(L, arr1) << endl;
-	cout << "第i个值的地址为:" << Locate(L, 3) << endl;
-	//判空ListEmpty(L)、求表长ListLength(L)、释放DestroyList(&L)、置空ClearList(&L)；
-	ListLength(L);
-	ClearList(L);
-	DestroyList(L);
-	ListEmpty(L);
+	Linkstack M;
+	int n;
+	lselemtype e='\0';//初始化e，char类型
+	initstack(M);
+	std::cout << "请输入要入栈的字符数量:";
+	std::cin >> n;
+	std::cout << "请输入要入栈的字符:";
+	for (int i = 0; i < n; i++)
+	{
+		std::cin >> e;
+		push_stack(M, e);
+	}
+		
+	Traverse(M);
+	stackempty(M);//判断栈是否为空
+	std::cout << "此时栈顶元素为:";
+	std::cout << GetTop(M);
+	pop_stack(M,e);//将栈顶元素移出栈
+	std::cout << std::endl;
+	std::cout << "栈顶元素移出后的链栈为:" <<std::endl;
+	Traverse(M);
+	Clearstack(M);
+	Destroystack(M);
+	return 0;
 }
